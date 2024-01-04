@@ -1,0 +1,43 @@
+class Employee:
+    def __init__(self, emp_id, emp_name, emp_salary):
+        self.emp_id = emp_id
+        self.emp_name = emp_name
+        self.emp_salary = emp_salary
+
+class EmployeeManagementSystem:
+    def __init__(self):
+        self.employees = []
+
+    def add_employee(self, emp_id, emp_name, emp_salary):
+        employee = Employee(emp_id, emp_name, emp_salary)
+        self.employees.append(employee)
+        print(f"Employee {emp_name} added successfully.")
+
+    def display_employees(self):
+        if not self.employees:
+            print("No employees in the system.")
+        else:
+            print("\nEmployee List:")
+            for employee in self.employees:
+                print(f"ID: {employee.emp_id}, Name: {employee.emp_name}, Salary: {employee.emp_salary}")
+
+    def search_employee(self, emp_id):
+        for employee in self.employees:
+            if employee.emp_id == emp_id:
+                print("\nEmployee Found:")
+                print(f"ID: {employee.emp_id}, Name: {employee.emp_name}, Salary: {employee.emp_salary}")
+                return
+        print(f"\nEmployee with ID {emp_id} not found.")
+
+# Example Usage
+if __name__ == "__main__":
+    emp_system = EmployeeManagementSystem()
+
+    emp_system.add_employee(1, "John Doe", 50000)
+    emp_system.add_employee(2, "Jane Smith", 60000)
+    emp_system.add_employee(3, "Bob Johnson", 55000)
+
+    emp_system.display_employees()
+
+    emp_system.search_employee(2)
+    emp_system.search_employee(4)
